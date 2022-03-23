@@ -21,7 +21,6 @@ def main():
     cast = Cast()
     cast.add_actor("snakes", Cycle())
     cast.add_actor("scores", Score())
-   
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()

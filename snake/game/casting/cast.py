@@ -79,3 +79,17 @@ class Cast:
         """
         if group in self._actors:
             self._actors[group].remove(actor)
+
+    def get_second_actor(self, group):
+        """Gets the first actor in the given group.
+        
+        Args:
+            group (string): The name of the group.
+            
+        Returns:
+            List: The first actor in the group.
+        """
+        result = None
+        if group in self._actors.keys():
+            result = self._actors[group][1]
+        return result
