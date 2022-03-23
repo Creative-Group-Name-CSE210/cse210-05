@@ -26,7 +26,7 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         if not self._is_game_over:
-            self._handle_food_collision(cast)
+            #self._handle_food_collision(cast)
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
