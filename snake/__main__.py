@@ -19,7 +19,7 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("snakes", Cycle())
+    cast.add_actor("snakes", Cycle(Point(100,50)))
     cast.add_actor("scores", Score())
     # start the game
     keyboard_service = KeyboardService()
