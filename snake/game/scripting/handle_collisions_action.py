@@ -27,9 +27,10 @@ class HandleCollisionsAction(Action):
         """
         if not self._is_game_over:
             """self._handle_food_collision(cast)"""
-            self._handle_trail_collision(cast)
+            #self._handle_trail_collision(cast)
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
+
 
     def _handle_trail_collision(self, cast):
         """Updates the score nd moves the food if the snake collides with the food.
@@ -59,7 +60,7 @@ class HandleCollisionsAction(Action):
             points = trail.get_points()
             score.add_points(points)
             trail.reset()
-    
+            
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
         
