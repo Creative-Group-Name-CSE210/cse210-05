@@ -26,6 +26,7 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         if not self._is_game_over:
+            """self._handle_food_collision(cast)"""
             self._handle_trail_collision(cast)
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
@@ -36,6 +37,19 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
+
+        """        
+        score = cast.get_first_actor("scores")
+        food = cast.get_first_actor("foods")
+        snake = cast.get_first_actor("snakes")
+        head = snake.get_head()
+
+        if head.get_position().equals(food.get_position()):
+            points = food.get_points()
+            snake.grow_tail(points)
+            score.add_points(points)
+            food.reset()
+            """
         score = cast.get_first_actor("scores")
         trail = cast.get_first_actor("trail")
         snake = cast.get_first_actor("snakes")
@@ -70,6 +84,7 @@ class HandleCollisionsAction(Action):
             snake = cast.get_first_actor("snakes")
             segments = snake.get_segments()
             trail = cast.get_first_actor("trail")
+            """food = cast.get_first_actor("foods")"""
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -83,3 +98,4 @@ class HandleCollisionsAction(Action):
             for segment in segments:
                 segment.set_color(constants.WHITE)
             trail.set_color(constants.WHITE)
+            """food.set_color(constants.WHITE)"""
