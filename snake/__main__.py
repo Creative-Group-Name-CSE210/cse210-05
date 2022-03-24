@@ -21,6 +21,10 @@ def main():
     cast = Cast()
     cast.add_actor("snakes", Cycle(Point(100,50)))
     cast.add_actor("snakes", Cycle(Point(800,50)))
+    # snake1 = cast.get_first_actor("snakes") # This doesn't actually fix them spawning correctly, idk how to make it work
+    # snake2 = cast.get_second_actor("snakes")
+    # snake1.set_position(Point(100, 50))
+    # snake2.set_position(Point(800, 50))
     cast.add_actor("scores", Score())
     # start the game
     keyboard_service = KeyboardService()
