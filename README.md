@@ -1,5 +1,5 @@
 # Cycle
-Cycle is a game where 2 players move a snake and evertime they move the snake leaves a longer trail. How long can you mak eyour trail? if you run into your tail or the other players tail the game is over. 
+Cycle is a game where 2 players move a snake and evertime they move the snake leaves a longer trail. How long can you make your trail? if you run into your tail or the other players tail the game is over. 
 
 ## Getting Started
 ---
