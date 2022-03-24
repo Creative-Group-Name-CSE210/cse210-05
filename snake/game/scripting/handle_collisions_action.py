@@ -27,8 +27,8 @@ class HandleCollisionsAction(Action):
         """
         if not self._is_game_over:
             """self._handle_food_collision(cast)"""
-            #self._handle_trail_collision(cast)
-            self._handle_segment_collision(cast)
+            self._handle_trail_collision(cast)
+            #self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
 
@@ -51,16 +51,23 @@ class HandleCollisionsAction(Action):
             score.add_points(points)
             food.reset()
             """
-        score = cast.get_first_actor("scores")
-        trail = cast.get_first_actor("trail")
-        snake = cast.get_first_actor("snakes")
-        head = snake.get_head()
+        cycle = cast.get_first_actor("snakes")
+        cycle2 = cast.get_second_actor('snakes')
+        head = cycle.get_head()
+        head2 = cycle2.get_head()
 
-        if head.get_position().equals(trail.get_position()):
-            points = trail.get_points()
-            score.add_points(points)
-            trail.reset()
-            
+        for segment in cycle.get_segments():
+            if head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+            elif head2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+
+        for segment in cycle2.get_segments():
+            if head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+            elif head2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
         
@@ -82,9 +89,10 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            snake = cast.get_first_actor("snakes")
-            segments = snake.get_segments()
-            trail = cast.get_first_actor("trail")
+            cycle = cast.get_first_actor("snakes")
+            segments = cycle.get_segments()
+            cycle2 = cast.get_second_actor("snakes")
+            segments2 = cycle2.get_segments()
             """food = cast.get_first_actor("foods")"""
 
             x = int(constants.MAX_X / 2)
@@ -98,5 +106,7 @@ class HandleCollisionsAction(Action):
 
             for segment in segments:
                 segment.set_color(constants.WHITE)
-            trail.set_color(constants.WHITE)
+            
+            for segment in segments2:
+                segment.set_color(constants.WHITE)
             """food.set_color(constants.WHITE)"""
