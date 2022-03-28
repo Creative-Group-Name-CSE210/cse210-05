@@ -19,8 +19,8 @@ class Cycle(Actor):
         self._color = Color(255, 255, 255)
         self._velocity = Point(0, 0)
         self._segments = []
-        self._prepare_body()
         self._position = position
+        self._prepare_body()
 
     def get_segments(self):
         return self._segments
@@ -57,8 +57,9 @@ class Cycle(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y / 2)
+        
+        x = self._position.get_x()
+        y = self._position.get_y()
 
         for i in range(constants.SNAKE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
